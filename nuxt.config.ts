@@ -13,4 +13,8 @@ export default defineNuxtConfig({
       Montserrat: true,
     },
   },
+
+  image: {
+    domains: ['https://cdn.dummyjson.com']
+  }
 })
