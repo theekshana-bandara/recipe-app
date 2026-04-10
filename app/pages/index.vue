@@ -1,8 +1,4 @@
-<script setup>
-definePageMeta({
-    layout: 'login'
-});
-</script>
+<script setup></script>
 
 <template>
     <div>
