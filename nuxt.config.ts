@@ -1,7 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+  devtools: {
+    enabled: true,
+
+    timeline: {
+      enabled: true
+    }
+  },
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
@@ -13,4 +19,8 @@ export default defineNuxtConfig({
       Montserrat: true,
     },
   },
+
+  image: {
+    domains: ['https://cdn.dummyjson.com']
+  }
 })
