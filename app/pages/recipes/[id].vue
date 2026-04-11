@@ -6,12 +6,25 @@ const { data, error } = await useFetch<Recipe>(
   `https://dummyjson.com/recipes/${id}`,
 );
 
-if(error.value){
-    throw createError({
-        statusCode: error.value?.statusCode,
-        statusText: error.value?.statusText,
-    });
+if (error.value) {
+  throw createError({
+    statusCode: error.value?.statusCode,
+    statusText: error.value?.statusText,
+  });
 }
+
+useSeoMeta({
+  title: data.value?.name,
+  description: "Recipesforyoutocook!",
+  ogTitle: data.value?.name,
+  ogDescription: "Recipesforyoutocook!",
+  ogImage: data.value?.image,
+  ogUrl: "http:localhost:3001/recipes/${data.value?|.id}",
+  twitterTitle: data.value?.name,
+  twitterDescription: "Recipesforyoutocook!",
+  twitterImage: data.value?.image,
+  twitterCard: "summary",
+});
 </script>
 
 <template>
