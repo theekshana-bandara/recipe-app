@@ -1,7 +1,15 @@
+import { getRecipeById } from '../../services/recipeService';
+
 export default defineEventHandler(async (event) => {
-  const id = getRouterParam(event, "id");
+  const id = getRouterParam(event, 'id');
 
-  const recipe = await $fetch(`https://dummyjson.com/recipes/${id}`);
+  if (!id) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Recipe ID is required',
+    });
+  }
 
+  const recipe = await getRecipeById(id);
   return recipe;
 });

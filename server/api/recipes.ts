@@ -1,5 +1,7 @@
+import { getAllRecipes } from "../services/recipeService";
+
 export default defineEventHandler(async () => {
-  const recipes = await $fetch("https://dummyjson.com/recipes");
+  const recipes = await getAllRecipes();
 
   return recipes;
 });
