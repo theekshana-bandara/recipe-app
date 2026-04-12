@@ -25,5 +25,11 @@ export default defineNuxtConfig({
 
   image: {
     domains: ['https://cdn.dummyjson.com']
-  }
+  },
+
+  routeRules: {
+    '/': { ssr: true },
+    '/about': { ssr: false },
+    '/recipes/**': { swr: 3600 },
+  },
 })
