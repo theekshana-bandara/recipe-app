@@ -3,7 +3,7 @@ import { type Recipe } from "../../../types/types";
 
 const { id } = useRoute().params;
 const { data, error } = await useFetch<Recipe>(
-  `https://dummyjson.com/recipes/${id}`,
+  `/api/recipes/${id}`,
 );
 
 if (error.value) {
