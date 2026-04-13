@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import { type RecipeResponse } from "../../types/types";
-const { data, error } = await useFetch<RecipeResponse>('https://dummyjson.com/recipes');
+const { data, error } = await useFetch<RecipeResponse>("/api/recipes");
+
+// Use custom composable
+const { searchResults } = useRecipeSearch();
+
+const displayedRecipes = computed(() => {
+  if (searchResults.value && searchResults.value.recipes.length > 0) {
+    return searchResults.value.recipes;
+  }
+  return data.value?.recipes || [];
+});
 </script>
 
 <template>
@@ -13,22 +23,38 @@ const { data, error } = await useFetch<RecipeResponse>('https://dummyjson.com/re
         <p class="text-xl lg:text-2xl mb-8 text-balance">
           Discover recipes helping you to find the easiest way to cook.
         </p>
-        <button class="px-4 py-2 text-white self-start bg-dodgeroll-gold rounded-md text-lg cursor-pointer">
+        <button
+          class="px-4 py-2 text-white self-start bg-dodgeroll-gold rounded-md text-lg cursor-pointer"
+        >
           Browse Recipes
         </button>
       </div>
       <div class="flex-1 order-1 lg:order-2">
-        <NuxtImg sizes="xs:100vw sm:667px" class="w-full" src="/nuxt-course-hero.png" format="webp" alt="" />
+        <NuxtImg
+          sizes="xs:100vw sm:667px"
+          class="w-full"
+          src="/nuxt-course-hero.png"
+          format="webp"
+          alt=""
+        />
       </div>
     </div>
   </section>
   <section class="py-20 container">
     <h2 class="text-3xl lg:text-5xl mb-2">Discover, Create, Share</h2>
     <p class="text-lg lg:text-xl mb-8">Check out our most popular recipes!</p>
-    <div v-if="!error" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8">
-      <RecipeCard v-for="recipe in data?.recipes" :recipe="recipe" />
+
+    <RecipeSearch />
+
+    <div
+      v-if="!error"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8"
+    >
+      <RecipeCard v-for="recipe in displayedRecipes" :recipe="recipe" />
     </div>
-    <p v-else class="text-xl">Opps, something went wrong. Please try again later</p>
+    <p v-else class="text-xl">
+      Opps, something went wrong. Please try again later
+    </p>
   </section>
 </template>
 
