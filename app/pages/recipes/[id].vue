@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { type Recipe } from "../../../types/types";
 
+// Apply our named middleware to this page
+definePageMeta({
+  middleware: ["validate-id"],
+});
+
 const { id } = useRoute().params;
-const { data, error } = await useFetch<Recipe>(
-  `/api/recipes/${id}`,
-);
+const { data, error } = await useFetch<Recipe>(`/api/recipes/${id}`);
 
 if (error.value) {
   throw createError({
