@@ -1,75 +1,39 @@
-# Nuxt Minimal Starter
+# Nuxt Recipe Learning Project
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This project is a Nuxt learning app for recipes.
+I created it to practice core Nuxt concepts in a simple real-world flow.
 
-## Setup
+## Project Description
 
-Make sure to install dependencies:
+A small recipe application built with Nuxt, using API routes and reusable components.
+It includes recipe listing, recipe details, and recipe search.
+
+## Concepts Practiced
+
+- API endpoints in `server/api`
+- Service layer in `server/services`
+- Decorator-style patterns through reusable composables and metadata usage
+- UI and reusable components
+- File-based routing
+- SSR and CSR behavior in Nuxt
+- Basic SEO setup with Nuxt page metadata
+
+## Repository
+
+`https://github.com/theekshana-bandara/recipe-app`
+
+## Run Locally
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Open `http://localhost:3000`
 
-Build the application for production:
+## Build
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
